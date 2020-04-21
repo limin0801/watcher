@@ -55,6 +55,18 @@ class DataSourceBase(object):
                      instance_root_disk_size=None,
                      host_memory_usage=None
                      ),
+        prometheus=dict(host_cpu_usage='mem_total',
+                        instance_cpu_usage=None,
+                        instance_l3_cache_usage=None,
+                        host_outlet_temp=None,
+                        host_airflow=None,
+                        host_inlet_temp=None,
+                        host_power=None,
+                        instance_ram_usage=None,
+                        instance_ram_allocated=None,
+                        instance_root_disk_size=None,
+                        host_memory_usage=None
+                     ),
     )
 
     @abc.abstractmethod

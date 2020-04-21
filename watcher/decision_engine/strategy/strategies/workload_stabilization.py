@@ -222,7 +222,7 @@ class WorkloadStabilization(base.WorkloadStabilizationBaseStrategy):
                 },
             }
         }
-
+    """
     @classmethod
     def get_config_opts(cls):
         return [
@@ -234,6 +234,19 @@ class WorkloadStabilization(base.WorkloadStabilizationBaseStrategy):
                 item_type=cfg.types.String(choices=['gnocchi', 'ceilometer',
                                                     'monasca']),
                 default=['gnocchi', 'ceilometer', 'monasca'])
+        ]
+    """
+    @classmethod
+    def get_config_opts(cls):
+        return [
+            cfg.ListOpt(
+                "datasources",
+                help="Datasources to use in order to query the needed metrics."
+                     " If one of strategy metric isn't available in the first"
+                     " datasource, the next datasource will be chosen.",
+                item_type=cfg.types.String(choices=['gnocchi', 'ceilometer',
+                                                    'monasca', 'prometheus']),
+                default=['prometheus'])
         ]
 
     def transform_instance_cpu(self, instance_load, host_vcpus):
